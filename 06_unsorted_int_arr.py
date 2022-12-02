@@ -32,13 +32,15 @@ def get_min_max(ints):
     return (min, max)
 
 
-def test():
-    l = [i for i in range(0, 10)]  # a list containing 0 - 9
+def test(test_case):
+    l = [i for i in test_case]  # a list containing 0 - 9
     random.shuffle(l)
 
-    assert (0, 9) == get_min_max(l), print("Failed test")
-    print("Passed test")
+    return get_min_max(l)
 
 
 if __name__ == "__main__":
-    test()
+    assert (0, 9) == test([i for i in range(10)]), print("Failed test 01")
+    assert (0, 19) == test([i for i in range(20)]), print("Failed test 02")
+    assert (0, 29) == test([i for i in range(30)]), print("Failed test 03")
+    print("All tests passed")

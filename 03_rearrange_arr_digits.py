@@ -81,3 +81,5 @@ def test_function(test_case, test_num):
 if __name__ == "__main__":
     test_function([[1, 2, 3, 4, 5], [542, 31]], "01")
     test_function([[4, 6, 2, 5, 9, 8], [964, 852]], "02")
+    test_function([[1, 2, 3, 4, 5, 6, 7, 8, 9, 0], [97531, 86420]], "03")
+    test_function([[], []], "04")
