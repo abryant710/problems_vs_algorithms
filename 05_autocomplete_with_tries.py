@@ -84,6 +84,8 @@ for word in wordList:
 
 
 def test(prefix):
+    if not prefix:
+        return None
     prefix_node = my_trie.find(prefix)
     if prefix_node:
         return prefix_node.suffixes()
@@ -96,4 +98,6 @@ if __name__ == "__main__":
     assert test("f") == ["un", "unction", "actory"], print("Test 2 failed")
     assert test("fu") == ["n", "nction"], print("Test 3 failed")
     assert test("tri") == ["e", "gger", "gonometry", "pod"], print("Test 4 failed")
+    assert test("blah") == "blah not found", print("Test 5 failed")
+    assert test(None) == None, print("Test 6 failed")
     print("All tests passed")
