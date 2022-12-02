@@ -22,10 +22,16 @@ class TrieNode:
     def __init__(self):
         ## Initialize this node in the Trie
         self.children = {}
+        self.is_word = False
 
     def insert(self, char):
         ## Add a child node in this Trie
-        self.children[char] = TrieNode()
+        current_node = self
+        for char in word:
+            if char not in current_node.children:
+                current_node.children[char] = TrieNode()
+            current_node = current_node.children[char]
+        current_node.is_word = True
 
     def suffixes(self, suffix=""):
         ## Recursive function that collects the suffix for
@@ -59,7 +65,7 @@ class Trie:
         return node
 
 
-MyTrie = Trie()
+my_trie = Trie()
 wordList = [
     "ant",
     "anthology",
@@ -74,22 +80,20 @@ wordList = [
     "tripod",
 ]
 for word in wordList:
-    MyTrie.insert(word)
-
-from ipywidgets import widgets
-from IPython.display import display
-from ipywidgets import interact
+    my_trie.insert(word)
 
 
-def f(prefix):
-    if prefix != "":
-        prefixNode = MyTrie.find(prefix)
-        if prefixNode:
-            print("\n".join(prefixNode.suffixes()))
-        else:
-            print(prefix + " not found")
+def test(prefix):
+    prefix_node = my_trie.find(prefix)
+    if prefix_node:
+        return prefix_node.suffixes()
     else:
-        print("")
+        return prefix + " not found"
 
 
-interact(f, prefix="")
+if __name__ == "__main__":
+    assert test("ant") == ["hology", "agonist", "onym"], print("Test 1 failed")
+    assert test("f") == ["un", "unction", "actory"], print("Test 2 failed")
+    assert test("fu") == ["n", "nction"], print("Test 3 failed")
+    assert test("tri") == ["e", "gger", "gonometry", "pod"], print("Test 4 failed")
+    print("All tests passed")
