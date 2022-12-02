@@ -40,4 +40,5 @@ def test():
     print("Passed test")
 
 
-test()
+if __name__ == "__main__":
+    test()

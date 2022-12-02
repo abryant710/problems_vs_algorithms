@@ -66,8 +66,9 @@ def test_function(test_case, test_num):
     print("Passed test case {}".format(test_num))
 
 
-test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 6], "01")
-test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 1], "02")
-test_function([[6, 7, 8, 1, 2, 3, 4], 8], "03")
-test_function([[6, 7, 8, 1, 2, 3, 4], 1], "04")
-test_function([[6, 7, 8, 1, 2, 3, 4], 10], "05")
+if __name__ == "__main__":
+    test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 6], "01")
+    test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 1], "02")
+    test_function([[6, 7, 8, 1, 2, 3, 4], 8], "03")
+    test_function([[6, 7, 8, 1, 2, 3, 4], 1], "04")
+    test_function([[6, 7, 8, 1, 2, 3, 4], 10], "05")
