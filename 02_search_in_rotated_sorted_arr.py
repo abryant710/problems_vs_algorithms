@@ -20,12 +20,6 @@ def rotated_array_search(input_list, number):
     """
     Find the index by searching in a rotated sorted array
 
-    Time complexity: O(log n)
-    since we are splitting the array in half each time
-    which is equivalent to using a binary search, which is O(log n)
-    Space complexity: O(1)
-    since we are not using any additional data structures to store data
-
     Args:
       input_list(array), number(int): Input array to search and the target
     Returns:
@@ -63,7 +57,6 @@ def test_function(test_case, test_num):
     assert linear_search(input_list, number) == rotated_array_search(input_list, number), "Test {}: Failed".format(
         test_num
     )
-    print("Passed test case {}".format(test_num))
 
 
 if __name__ == "__main__":
@@ -72,3 +65,8 @@ if __name__ == "__main__":
     test_function([[6, 7, 8, 1, 2, 3, 4], 8], "03")
     test_function([[6, 7, 8, 1, 2, 3, 4], 1], "04")
     test_function([[6, 7, 8, 1, 2, 3, 4], 10], "05")
+    # Edge cases for empty list and large input list
+    test_function([[], 10], "06")
+    long_arr = [i for i in range(1000000)]
+    test_function([long_arr[4:] + long_arr[0:3], 4], "07")
+    print("All tests passed for rotated_array_search()")
