@@ -18,4 +18,20 @@ The solution is to use a trie. The idea is to store the path in the trie. The al
    3. If the list of strings is found, return the path.
    4. If the list of strings is not found, return a "Not found" handler.
 
-The time complexity is O(n), where n is the path after it has been split. The space complexity is O(n) because the storage of the paths in the trie is O(n).
+Algorithm complexity breakdown:
+
+`p` is the length of the path after splitting it into a list of strings.
+
+RouteTrie class:
+
+The time complexity of inserting a path into the trie is O(p).
+The time complexity of finding a path in the trie is O(p).
+
+Router class:
+
+Since the add_handler method calls the RouteTrie insert method, the time complexity is O(p).
+Since the lookup method calls the RouteTrie find method, the time complexity is O(p).
+
+The time complexity of the overall algorithm is O(p).
+
+The space complexity of the algorithm is O(n), where `n` is the number of paths in the list, due to the self.children dictionary attribute in the RouteTrieNode class.
