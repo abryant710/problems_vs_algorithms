@@ -90,9 +90,11 @@ class Router:
         # return the "not found" handler if you added one
         # bonus points if a path works with and without a trailing slash
         # e.g. /about and /about/ both return the /about handler
+
         # Handle edge cases
         if path == "" or path == None or path == "/":
             return self.not_found_handler
+
         split_path = self.split_path(path)
         handler = self.route_trie.find(split_path)
         if handler is None:
