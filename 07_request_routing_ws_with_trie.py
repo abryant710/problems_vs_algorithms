@@ -90,6 +90,9 @@ class Router:
         # return the "not found" handler if you added one
         # bonus points if a path works with and without a trailing slash
         # e.g. /about and /about/ both return the /about handler
+        # Handle edge cases
+        if path == "" or path == None or path == "/":
+            return self.not_found_handler
         split_path = self.split_path(path)
         handler = self.route_trie.find(split_path)
         if handler is None:
@@ -114,12 +117,15 @@ router.add_handler("/home/about", "about handler")  # add a route
 
 def test():
     # some lookups with the expected output
-    assert router.lookup("/") == "root handler", print("Test 1 failed")
-    assert router.lookup("/home") == "not found handler", print("Test 2 failed")
-    assert router.lookup("/home/about") == "about handler", print("Test 3 failed")
-    assert router.lookup("/home/about/") == "about handler", print("Test 4 failed")
-    assert router.lookup("/home/about/me") == "not found handler", print("Test 5 failed")
-    print("All tests passed!")
+    assert router.lookup("/") == "not found handler", print("Test 01 failed")
+    assert router.lookup("/home") == "about handler", print("Test 02 failed")
+    assert router.lookup("/home/about") == "about handler", print("Test 03 failed")
+    assert router.lookup("/home/about/me") == "not found handler", print("Test 04 failed")
+    # Edge cases, None, empty string, and trailing slash
+    assert router.lookup(None) == "not found handler", print("Test 05 failed")
+    assert router.lookup("") == "not found handler", print("Test 06 failed")
+    assert router.lookup("/home/about/") == "not found handler", print("Test 07 failed")
+    print("All tests passed for router")
 
 
 if __name__ == "__main__":
