@@ -15,4 +15,4 @@ The solution is to use binary search. The idea is to find the integer `x` such t
    3. If `mid * mid < n`, set `start = mid + 1`.
    4. If `mid * mid > n`, set `end = mid - 1`.
 
-The time complexity is O(log n) because the number of iterations is `log n` and each iteration takes constant time.
+The time complexity is O(log n) because the number of iterations is `log n` and each iteration takes constant time. The space complexity is O(1) because we only use a few variables and no large data structures.
