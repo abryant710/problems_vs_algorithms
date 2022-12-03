@@ -41,11 +41,6 @@ def rearrange_digits(input_list):
     """
     Rearrange Array Elements so as to form two number such that their sum is maximum.
 
-    Time complexity: O(nlog(n))
-    since we use merge sort to sort the array, which has a time complexity of O(nlog(n))
-    Space complexity: O(n)
-    since we create a new array to store the sorted array
-
     Args:
        input_list(list): Input List
     Returns:
@@ -75,11 +70,22 @@ def test_function(test_case, test_num):
     output = rearrange_digits(test_case[0])
     solution = test_case[1]
     assert sum(output) == sum(solution), print("Test {}: Failed".format(test_num))
-    print("Passed test case: {}".format(test_num))
 
 
 if __name__ == "__main__":
     test_function([[1, 2, 3, 4, 5], [542, 31]], "01")
     test_function([[4, 6, 2, 5, 9, 8], [964, 852]], "02")
     test_function([[1, 2, 3, 4, 5, 6, 7, 8, 9, 0], [97531, 86420]], "03")
+    # Edge cases, empty list and longer list
     test_function([[], []], "04")
+    test_function(
+        [
+            [i for i in range(100)],
+            [
+                98969492908886848280787674727068666462605856545250484644424038363432302826242220181614121086420,
+                99979593918987858381797775737169676563615957555351494745434139373533312927252321191715131197531,
+            ],
+        ],
+        "05",
+    )
+    print("All tests passed for rearrange_digits()")
