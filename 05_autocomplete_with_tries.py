@@ -55,12 +55,6 @@ class Trie:
         self.root.insert(word)
 
     def find(self, prefix):
-        """
-        Time Complexity: O(n)
-        since we are iterating through each character in the prefix
-        Space Complexity: O(1)
-        since we are not creating any new data structure
-        """
         ## Find the Trie node that represents this prefix
         node = self.root
         for char in prefix:
