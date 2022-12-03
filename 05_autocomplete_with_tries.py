@@ -100,10 +100,14 @@ def test(prefix):
 
 
 if __name__ == "__main__":
-    assert test("ant") == ["hology", "agonist", "onym"], print("Test 1 failed")
-    assert test("f") == ["un", "unction", "actory"], print("Test 2 failed")
-    assert test("fu") == ["n", "nction"], print("Test 3 failed")
-    assert test("tri") == ["e", "gger", "gonometry", "pod"], print("Test 4 failed")
-    assert test("blah") == "blah not found", print("Test 5 failed")
-    assert test(None) == None, print("Test 6 failed")
-    print("All tests passed")
+    assert test("ant") == ["hology", "agonist", "onym"], print("Test 01 failed")
+    assert test("f") == ["un", "unction", "actory"], print("Test 02 failed")
+    assert test("fu") == ["n", "nction"], print("Test 03 failed")
+    assert test("tri") == ["e", "gger", "gonometry", "pod"], print("Test 04 failed")
+    # Edge cases, None, empty string, string not in trie, and very long string
+    assert test(None) == None, print("Test 05 failed")
+    assert test("") == None, print("Test 06 failed")
+    assert test("blah") == "blah not found", print("Test 07 failed")
+    long_string = "a" * 10000
+    assert test(long_string) == f"{long_string} not found", print("Test 08 failed")
+    print("All tests passed for autocomplete_with_tries.py")
